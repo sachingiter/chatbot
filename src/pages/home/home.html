@@ -1,0 +1,51 @@
+<!-- <ion-header>
+    
+  <ion-navbar color="primary">
+    <ion-title>
+      Conciedge
+    </ion-title>
+  </ion-navbar>
+</ion-header> -->
+
+<ion-content padding class="bg-blue">
+  <br><br>
+  <h4 margin-top ion-text color="light">Welcome to <strong>Conciedge</strong></h4>
+  <p ion-text color="light">Make your travel easy and magical</p>
+  <br><br><br><br><br><br><br><br>
+  <button ion-button large round full color="facebook" class="btn" icon-start (click)="fbLogin()" >
+      <ion-icon name="logo-facebook"></ion-icon>
+    Continue with facebook
+  </button>
+
+  <button margin-top ion-button large round full color="light" class="btn" (click)="signup()" >Sign up free</button>
+
+  <div class="center">
+    <p ion-text color="light">By signing up I agree to Conciedge's <a ion-text color="light" href="">Term of Service</a> & <a ion-text color="light" href="">Privacy Policy</a> </p>
+  </div>
+
+  <div class="center" margin-top padding-top>
+    <p ion-text color="light"><b>Already have an account?</b></p>
+  </div>
+
+  <button outline round ion-button color="light" class="full border btn" (click)="signup()" >Log in</button>
+
+  <!-- <ion-item class="itemInput">
+    <ion-icon color="primary" item-start ios="ios-phone-portrait" md="md-phone-portrait"></ion-icon>
+    <ion-input placeholder="Mobile Number" type="number" [(ngModel)]="mobile" ></ion-input>
+  </ion-item>
+  <ion-item  class="itemInput">
+    <ion-icon color="primary" item-start ios="ios-lock" md="md-lock"></ion-icon>
+    <ion-input placeholder="Password" type="{{passwordType}}" [(ngModel)]="password"></ion-input>  
+    <button ion-button clear item-end no-margin no-padding (click)='showHide()' style="margin-right: -6px;">
+      <ion-icon *ngIf="passwordType == 'password'" style="font-size: 30px" color="primary" ios="ios-eye-off" md="md-eye-off"></ion-icon>
+      <ion-icon *ngIf="passwordType == 'text'" style="font-size: 30px" color="primary" ios="ios-eye" md="md-eye"></ion-icon>
+    </button>
+  </ion-item> -->
+  <!-- <br>
+
+  <button ion-button full (click)="login()" [disabled]="!mobile || !password" >LOGIN</button>
+  <ion-item class="center" no-lines><p>Or Connect with Social Media</p></ion-item> -->
+ 
+  <!-- <ion-item class="center" no-lines (click)="signup()" ><p>Not have account? <b>Register here</b></p></ion-item> -->
+ 
+</ion-content>

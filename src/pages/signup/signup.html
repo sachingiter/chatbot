@@ -1,0 +1,42 @@
+<!--
+  Generated template for the SignupPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar color="primary">
+    <ion-title>Sign Up</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+    <ion-item>
+      <ion-icon color="primary" item-start ios="ios-phone-portrait" md="md-phone-portrait"></ion-icon>
+      <ion-label floating>Mobile Number</ion-label>
+      <ion-input no-margin type="number" [(ngModel)]="mobile" ></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-icon color="primary" item-start ios="ios-lock" md="md-lock"></ion-icon>
+      <ion-label floating>Pasword</ion-label>
+      <ion-input no-margin type="password" (keyup)="checkPassword()" [(ngModel)]="password" ></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-icon color="primary" item-start ios="ios-lock" md="md-lock"></ion-icon>
+      <ion-label floating>Confirm Pasword</ion-label>
+      <ion-input no-margin type="password" (keyup)="checkPassword()" [(ngModel)]="confirmpassword" ></ion-input>
+    </ion-item>
+    <p *ngIf="passmatch" style="color:red;">Password and confirm Password must be same.</p>
+    <ion-item  no-lines>
+        <button padding ion-button full (click)="signup()" [disabled]="!mobile || !password || confirmpassword != password" >SIGNUP</button>
+    </ion-item>
+    <ion-item class="center" padding-left padding-right text-wrap no-lines><p>By signing up with Metro Mini Cab you are agree to our <strong>Term and Conditions</strong> </p></ion-item>
+
+    <button padding ion-button full class="btn-blue btn radius-5" >SIGNUP</button>
+    <button padding ion-button full disabled class="btn-blue btn radius-5" >SIGNUP</button>
+
+</ion-content>

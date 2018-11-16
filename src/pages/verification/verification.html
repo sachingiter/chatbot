@@ -1,0 +1,50 @@
+<!--
+  Generated template for the VerificationPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar color="primary">
+    <ion-title>Verification</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <div class="center">
+    <img height="160px" width="100px" src="assets/imgs/mobile.png"/>
+  </div>
+  <ion-item class="center" padding-left padding-right text-wrap no-lines><p> waiting for automatically detect an SMS sent to your number </p></ion-item>
+  <ion-item class="center" padding-left padding-right text-wrap no-lines>
+    <b> +44 9876 543 210 </b><ion-icon ios="ios-create" md="md-create"></ion-icon>
+  </ion-item>
+  <ion-item class="center" padding-left padding-right text-wrap no-lines><p> Enter 4 - Digit code </p></ion-item>
+  <ion-row>
+    <ion-col>
+      <ion-item class="border-botttom">
+        <ion-input type="number" min="1" max="1" [(ngModel)]="code1"></ion-input>
+      </ion-item>
+    </ion-col>
+    <ion-col>
+      <ion-item class="border-botttom">
+        <ion-input type="number" min="1" max="1" [(ngModel)]="code2"></ion-input>
+      </ion-item>
+    </ion-col>
+    <ion-col>
+      <ion-item class="border-botttom">
+        <ion-input type="number" min="1" max="1" [(ngModel)]="code3"></ion-input>
+      </ion-item>
+    </ion-col>
+    <ion-col>
+      <ion-item class="border-botttom">
+        <ion-input type="number" min="1" max="1" [(ngModel)]="code4"></ion-input>
+      </ion-item>
+    </ion-col>
+  </ion-row>
+  <ion-item no-lines>
+    <button padding ion-button full (click)="verify()" >VERIFY</button>
+  </ion-item>
+</ion-content>

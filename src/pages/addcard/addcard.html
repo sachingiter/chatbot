@@ -1,0 +1,48 @@
+<!--
+  Generated template for the AddcardPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar color="primary">
+    <ion-title>Billing Information</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content padding>
+  <ion-list-header no-lines no-padding no-margin>
+    <h2 ion-text color="primary" style="font-size: 18px;font-weight: 800;font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif">Card Details</h2>
+  </ion-list-header>
+  <ion-item no-padding>
+    <ion-label floating>Card Number</ion-label>
+    <ion-input [(ngModel)]="cardno" type="tel" pattern="[0-9]*"></ion-input>
+    <button item-end ion-button clear icon-only>
+        <ion-icon  ios="ios-camera" md="md-camera"></ion-icon>
+      </button>
+  </ion-item>
+  <ion-item no-padding>
+    <ion-label floating>CardHolder Name</ion-label>
+    <ion-input [(ngModel)]="name"></ion-input>
+  </ion-item>
+  <ion-row>
+    <ion-col>
+      <ion-item no-padding>
+        <ion-label floating>MM/YY</ion-label>
+        <ion-datetime pickerFormat="MMMM/YYYY" displayFormat="MM-YYYY" [(ngModel)]="expiry"></ion-datetime>
+      </ion-item>
+    </ion-col>
+    <ion-col>
+      <ion-item no-padding>
+        <ion-label floating>CVV</ion-label>
+        <ion-input [(ngModel)]="cvv" type="tel" pattern="[0-9]*" maxlength="3"></ion-input>
+      </ion-item>
+    </ion-col>
+  </ion-row>
+  
+</ion-content>
+<ion-footer padding style="background-image: none">
+  <button full ion-button [disabled]="!cardno || !name || !expiry || !cvv" (click)="addCard()" >ADD</button>
+</ion-footer>

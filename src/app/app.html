@@ -1,0 +1,47 @@
+<ion-menu [content]="content" >
+    <ion-header>
+      <ion-toolbar color="primary">
+        <ion-item style="background-color: transparent" no-lines margin-top margin-bottom>
+            <img item-start [src]="user_image" height="90" width="90" style="border-radius: 50%;border: 3px solid whitesmoke;"/>
+            <div margin-left>
+                <h2 ion-text text-wrap color="light">{{ user_name }}</h2>
+                <p ion-text text-wrap color="light">{{ user_mobile }}</p>
+            </div>
+        </ion-item>
+      </ion-toolbar>
+    </ion-header>
+    <ion-content>
+      <ion-list>
+          <button menuClose ion-item (click)="profile()" no-lines>
+            <ion-icon item-left color="primary" name="ios-person-outline"></ion-icon>
+            PROFILE
+          </button>
+          <button menuClose ion-item (click)="billing()" no-lines>
+            <ion-icon item-left color="primary" name="ios-card-outline"></ion-icon>
+            BILLING INFORMATION
+          </button>     
+          <button menuClose ion-item (click)="boking()" no-lines>
+            <ion-icon item-left color="primary" name="md-calendar"></ion-icon>
+            CURRENT BOOKING
+          </button>   
+          <button menuClose ion-item (click)="history()" no-lines>
+            <ion-icon item-left color="primary" name="ios-clock-outline"></ion-icon>
+            BOOKING HISTORY
+          </button>   
+          <button menuClose ion-item (click)="about()" no-lines>
+            <ion-icon item-left color="primary" name="ios-information-circle-outline"></ion-icon>
+            ABOUT CONCIEGE
+          </button>     
+          <button menuClose ion-item (click)="faq()" no-lines>
+            <ion-icon item-left color="primary" name="ios-help-circle-outline"></ion-icon>
+            FAQ
+          </button>   
+          <button menuClose ion-item (click)="logout()" no-lines>
+            <ion-icon style="transform: rotate(-90deg)" item-left color="primary" name="md-log-out"></ion-icon>
+            LOGOUT
+          </button>      
+      </ion-list>
+    </ion-content>
+  </ion-menu>
+
+<ion-nav id="content1" #content [root]="rootPage"></ion-nav>

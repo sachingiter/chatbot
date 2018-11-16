@@ -1,0 +1,278 @@
+<!--
+  Generated template for the DashboardPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar color="light">
+    <button ion-button icon-only menuToggle >
+      <ion-icon name="menu" color="primary"></ion-icon>
+    </button>
+    
+    <ion-title >conciedge</ion-title>
+    <ion-buttons end>
+      <button  ion-button icon-only clear (click)="clearSession()">
+          <ion-icon name="refresh" color="primary"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content padding-top class="greyColor">
+  <button *ngIf="!messages.length" ion-button full (click)="clearSession()" >Click here to start</button>
+  <div *ngFor="let message1 of messages">
+    <ion-item no-lines *ngIf="message1.from == 'bot' ">
+      <ion-avatar item-start style="margin:0;margin-right:3px;">
+        <img src="assets/imgs/user.png" />
+      </ion-avatar>
+      <div style="margin-right: 30px;">
+        <div style="background-color: #cceaf7;border-bottom-left-radius: 10px;border-bottom-right-radius: 10px;border-top-right-radius: 10px;font-size: 10px;" padding>
+          <div *ngIf="message1.message">
+          <p ion-text text-wrap [innerHtml]="message1.message">
+            <!-- {{ message1.message }} -->
+          </p>
+          </div>
+          <!-- *ngIf="message1.action == 'restaurant' " -->
+          <div >
+            <ion-card *ngFor="let restaurant of message1.restaurants">
+              <ion-card-header><strong>{{ restaurant.name }}</strong></ion-card-header>
+              <ion-card-content>
+                {{ restaurant.address }}.<br>
+                {{ restaurant.city }}, {{ restaurant.state }}<br>
+                {{ restaurant.country }}, {{ restaurant.postal_code }}<br>
+                <a ion-button href="{{ restaurant.mobile_reserve_url }}">Open</a> 
+              </ion-card-content>
+            </ion-card>
+          </div>
+
+          <div >
+            <ion-card *ngFor="let cab of message1.cabs">
+              <ion-card-header><strong>{{ cab.TradingName }}</strong></ion-card-header>
+              <ion-card-content>
+                {{ cab.OrganisationName }}<br>
+                {{ cab.Distance }} near about you<br>
+                  <ion-row>
+                    <ion-col col-auto>
+                      <img src="assets/imgs/cab.png" style="width: 30px; margin-top: -7px" />
+                    </ion-col>
+                    <ion-col>
+                      <hr>
+                    </ion-col>
+                    <ion-col col-auto>
+                      <ion-icon name="pin" ></ion-icon>
+                    </ion-col>
+                  </ion-row>
+                  <button ion-button full icon-only (click)="callCabService(cab.BookingsPhoneNumber)" >
+                    <ion-icon ios="ios-call" md="md-call"></ion-icon>
+                  </button>
+              </ion-card-content>
+            </ion-card>
+          </div>
+
+          <div>
+            <ion-card *ngFor="let flight of message1.flights">
+              <ion-card-header><strong>Airline - {{ flight.airline }}</strong></ion-card-header>
+              <ion-card-content text-wrap>
+                <ion-row>
+                  <ion-col>
+                    <ion-icon ios="ios-clock" md="md-clock"></ion-icon> {{ flight.outbound.duration }}
+                  </ion-col>
+                  <ion-col col-auto style="text-align: right;">
+                    {{ flight.fare.currency }} {{ flight.fare.total_price }}
+                  </ion-col>
+                </ion-row>
+                <div>
+                    <ion-icon name="ios-plane"></ion-icon> {{ flight.outbound.flights[0].origin.airport }} 
+                  <span *ngFor="let dest of flight.outbound.flights" > - {{ dest.destination.airport }}</span>
+                </div>
+                <!-- Inbound -->
+                <ion-row *ngIf="flight.inbound" style="background: lightgray;">
+                  <ion-col>
+                    <ion-icon ios="ios-clock" md="md-clock"></ion-icon> {{ flight.inbound.duration }}
+                  </ion-col>
+                  <ion-col col-auto style="text-align: right;">
+                    {{ flight.fare.currency }} {{ flight.fare.total_price }}
+                  </ion-col>
+                </ion-row>
+                <div *ngIf="flight.inbound" style="background: lightgray;text-align: right;">
+                  <ion-icon name="ios-plane" style="transform: rotateY(180deg);" ></ion-icon> {{ flight.inbound.flights[0].origin.airport }} 
+                  <span *ngFor="let dest of flight.inbound.flights" > - {{ dest.destination.airport }}</span>
+                  <!-- &nbsp; -->
+                </div>
+                <!-- Inbound -->
+                <a ion-button href="{{ flight.deep_link }}">Open</a> 
+              </ion-card-content>
+            </ion-card>
+          </div>
+
+          <div >
+            <ion-card *ngFor="let hotel of message1.hotels">
+              <ion-card-header><strong>{{ hotel.property_name }}</strong></ion-card-header>
+              <ion-card-content text-wrap>
+                {{ hotel.address.line1 }},&nbsp;
+                {{ hotel.address.city }}<br>
+                  <ion-row>
+                    <ion-col>
+                      Price: {{ hotel.total_price.amount }} {{ hotel.total_price.currency }}
+                    </ion-col>
+                    <ion-col col-auto>
+                      <button style="margin-top: -5px;height: 2rem;" ion-button icon-only clear (click)="callCabService(hotel.contacts.detail, 'fromHotel')">
+                        <ion-icon ios="ios-call" md="md-call"></ion-icon>
+                      </button>
+                      <!-- <button ion-button icon-only clear (click)="openMapApplication()">
+                          <ion-icon name="pin" ></ion-icon>
+                      </button>                       -->
+                    </ion-col>
+                  </ion-row>
+                  <!-- <button ion-button full icon-only (click)="callCabService(cab.BookingsPhoneNumber)" >
+                    <ion-icon ios="ios-call" md="md-call"></ion-icon>
+                  </button> -->
+              </ion-card-content>
+            </ion-card>
+          </div>
+
+          <!-- <div >
+            <ion-card >
+              <ion-card-header><strong>{{ restaurant.name }}</strong></ion-card-header>
+              <ion-card-content>
+                {{ restaurant.address }}.<br>
+                {{ restaurant.city }}, {{ restaurant.state }}<br>
+                {{ restaurant.country }}, {{ restaurant.postal_code }}<br>
+                <a ion-button href="{{ restaurant.mobile_reserve_url }}">Open</a> 
+              </ion-card-content>
+            </ion-card>
+          </div> -->
+        </div>
+      </div>
+    </ion-item>
+    <ion-item no-lines no-margin *ngIf="message1.from != 'bot'">
+      <div item-end style="background-color:#f5f4f4;border-bottom-left-radius: 10px;border-bottom-right-radius: 10px;border-top-left-radius: 10px;font-size: 10px;margin-left: 40px;" padding>
+        <p ion-text text-wrap>
+          {{ message1.message }}
+        </p>
+      </div>
+    </ion-item>
+  </div>
+  
+  <div *ngIf="openFlightForm">
+    <ion-row>
+      <ion-col>
+        <ion-item>
+          <ion-label floating>Source</ion-label>
+          <ion-input [(ngModel)]="flightSource" ></ion-input>
+        </ion-item>
+      </ion-col>
+      <ion-col>
+        <ion-item>
+          <ion-label floating>Destination</ion-label>
+          <ion-input [(ngModel)]="flightDestination" ></ion-input>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-item>
+          <ion-label>Journey Date</ion-label>
+          <ion-datetime displayFormat="MMM DD YYYY" [(ngModel)]="journeyStartDate"></ion-datetime>
+        </ion-item>
+      </ion-col>      
+    </ion-row>
+    <ion-row>
+      <ion-col col-auto class="center">
+        <ion-label>Do you want to return journey</ion-label>
+        <button ion-button (click)="openTwoWay()" padding>Yes</button>
+        <button ion-button (click)="submitJourneydate()" padding >No</button>
+      </ion-col>
+    </ion-row>
+    <ion-row *ngIf="isTwoWayJourney">
+      <ion-col>
+        <ion-item>
+          <ion-label floating>Return Journey date</ion-label>
+          <ion-datetime displayFormat="MMM DD YYYY"  [(ngModel)]="journeyEndDate" ></ion-datetime>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col padding>
+        <button ion-button full (click)="submitJourneydate()" > Submit Date</button>
+      </ion-col>
+    </ion-row>
+  </div>
+  <div *ngIf="openForm">
+    <ion-row>
+      <ion-col>
+        <button ion-item (click)="fromModal()" >
+          <ion-label floating >From</ion-label>
+          <ion-input disabled=true [(ngModel)]="fromStation" ></ion-input>
+        </button>
+      </ion-col>
+      <ion-col>
+        <button ion-item (click)="toModal()" >
+          <ion-label floating>To</ion-label>
+          <ion-input disabled=true [(ngModel)]="toStation" ></ion-input>
+        </button>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <button [disabled]="!fromStation || !toStation" full ion-button (click)="sendStations()" >Submit</button>
+      </ion-col>
+    </ion-row>
+  </div>
+  <div *ngIf="openHotelForm">
+    <ion-row>
+      <ion-col>
+        <ion-item>
+          <ion-label floating>Check In</ion-label>
+          <ion-datetime displayFormat="MMM DD YYYY" [(ngModel)]="checkIn"></ion-datetime>
+        </ion-item>
+      </ion-col>
+      <ion-col>
+        <ion-item>
+          <ion-label floating>Check Out</ion-label>
+          <ion-datetime displayFormat="MMM DD YYYY" [(ngModel)]="checkOut"></ion-datetime>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-item>
+          <ion-label floating>Radius</ion-label>
+          <ion-input [(ngModel)]="hotelRadius" ></ion-input>
+        </ion-item>
+      </ion-col>
+      <ion-col>
+        <button ion-button full (click)="bookHotel()" >Submit</button>
+      </ion-col>
+    </ion-row>
+  </div>
+
+  <div>
+    <!-- <ion-row>
+      <ion-col col-auto>
+        <img src="assets/imgs/cab.png" style="width: 30px; margin-top: -7px" />
+      </ion-col>
+      <ion-col>
+        <hr>
+      </ion-col>
+      <ion-col col-auto>
+        <ion-icon name="pin" ></ion-icon>
+      </ion-col>
+    </ion-row> -->
+  </div>
+</ion-content>
+<ion-footer>
+  <div *ngIf="loader">
+    <img src="assets/imgs/loader.gif" style="width: 100%;height: 10px;" />
+  </div>
+  <ion-item>
+    <button ion-button item-start icon-only clear>
+      <ion-icon ios="ios-add-circle" md="md-add-circle"></ion-icon>
+    </button>
+    <ion-textarea placeholder="Text here" [(ngModel)]="compose"></ion-textarea>
+    <button [disabled]="!compose" item-end ion-button (click)="chat()" >SEND</button>
+  </ion-item>
+</ion-footer>

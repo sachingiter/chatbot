@@ -1,0 +1,95 @@
+// http://ionicframework.com/docs/theming/
+
+
+// App Global Sass
+// --------------------------------------------------
+// Put style rules here that you want to apply globally. These
+// styles are for the entire app and not just one component.
+// Additionally, this file can be also used as an entry point
+// to import other Sass files to be included in the output CSS.
+//
+// Shared Sass variables, which can be used to adjust Ionic's
+// default Sass variables, belong in "theme/variables.scss".
+//
+// To declare rules for a specific mode, create a child rule
+// for the .md, .ios, or .wp mode classes. The mode class is
+// automatically applied to the <body> element in the app.
+// @import url(http://fonts.googleapis.com/css?family=Oxygen);
+// @import url('../assets/fonts/Merriweather/Merriweather-Black.ttf');
+// @import url('../assets/fonts/Merriweather/Merriweather-BlackItalic.ttf');
+// @import url('../assets/fonts/Merriweather/Merriweather-Bold.ttf');
+// @import url('../assets/fonts/Merriweather/Merriweather-BoldItalic.ttf');
+// @import url('../assets/fonts/Merriweather/Merriweather-Light.ttf');
+// @import url('../assets/fonts/Merriweather/Merriweather-LightItalic.ttf');
+// @import url('../assets/fonts/Merriweather/Merriweather-Regular.ttf');
+
+// $font-family-base: 'Merriweather', serif !default;
+// body, p, h1, h2, h3, h4, h5, h6, div{
+//     font-family: 'Merriweather', serif ;
+//     // font-weight: 400;
+// }
+
+.center{
+    margin: 0 auto !important;
+    text-align: center !important;
+}
+.left{
+    text-align: left !important;
+}
+.border-botttom{
+    border-bottom: 1px solid #212F3D !important;
+}
+.image-button{
+    border-radius: 50%;
+    height: 70px;
+    width: 70px;
+    border: 8px solid rgb(190, 194, 199);
+}
+.profile-img-text{
+    margin-left: 5px;
+    margin-top: 30px;
+}
+.itemInput .item-inner{
+    margin-left: 5px !important;
+}
+.customToast .toast-wrapper{
+    background-color: whitesmoke !important;
+    width: calc(100% - 10px) !important;
+    -webkit-box-shadow: 0 0 10px #999 !important;
+        box-shadow: 0 0 10px #999 !important;
+    text-align: center;
+}
+.customToast .toast-message{
+    color: black !important;
+}
+.errorToast .toast-wrapper{
+    background-color: #f53d3d !important;
+    width: calc(100% - 10px) !important;
+    -webkit-box-shadow: 0 0 10px #999 !important;
+        box-shadow: 0 0 10px #999 !important;
+    text-align: center;
+}
+.errorToast .toast-message{
+    color: whitesmoke !important;
+}
+
+.bg-blue{
+    background: linear-gradient(to bottom right, #60c6f5, #158bfa);
+}
+.full{
+    width: 100%;
+}
+.border{
+    border: 2px solid white;
+}
+.btn{
+    font-weight: bold;
+    font-size: 1.6rem;
+    height: 3.2em;
+}
+.btn-blue{
+    background: linear-gradient(-90deg, #5c3cee, #60c6f5);
+}
+.radius-5{
+    border-radius: 5px;
+}
