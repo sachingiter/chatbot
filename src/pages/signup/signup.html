@@ -31,12 +31,12 @@
       <ion-input no-margin type="password" (keyup)="checkPassword()" [(ngModel)]="confirmpassword" ></ion-input>
     </ion-item>
     <p *ngIf="passmatch" style="color:red;">Password and confirm Password must be same.</p>
-    <ion-item  no-lines>
+    <!-- <ion-item  no-lines>
         <button padding ion-button full (click)="signup()" [disabled]="!mobile || !password || confirmpassword != password" >SIGNUP</button>
-    </ion-item>
+    </ion-item> -->
     <ion-item class="center" padding-left padding-right text-wrap no-lines><p>By signing up with Metro Mini Cab you are agree to our <strong>Term and Conditions</strong> </p></ion-item>
 
-    <button padding ion-button full class="btn-blue btn radius-5" >SIGNUP</button>
-    <button padding ion-button full disabled class="btn-blue btn radius-5" >SIGNUP</button>
+    <button padding ion-button full class="btn-blue btn radius-5" (click)="signup()" [disabled]="!mobile || !password || confirmpassword != password"  >SIGNUP</button>
+    <button padding ion-button full  class="btn-blue btn radius-5" (click)="logIn()">SIGIN</button>
 
 </ion-content>
