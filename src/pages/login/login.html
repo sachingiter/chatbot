@@ -1,0 +1,29 @@
+<ion-header>
+  <!-- <ion-navbar>
+    <ion-title>Forgot Your Password?</ion-title>
+  </ion-navbar> -->
+  <ion-navbar color="primary">
+    <ion-title>Log In</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+
+	<div>
+		<h5>Log in</h5>
+		<ion-list>
+		  <ion-item class="no-border">
+		    <ion-label stacked>MOBILE</ion-label>
+		    <ion-input type="number" placeholder="987894561" [(ngModel)]="mobile"></ion-input>
+		  </ion-item>
+		  <ion-item>
+		    <ion-label stacked>PASSWORD</ion-label>
+		    <ion-input type="password" placeholder="password" [(ngModel)]="password"></ion-input>
+		  </ion-item>
+		</ion-list>
+		<br><br><br>
+		<button padding ion-button full class="btn-blue btn radius-5" (click)="logIn()">LOG IN</button>
+	</div>
+
+</ion-content>

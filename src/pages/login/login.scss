@@ -1,0 +1,27 @@
+page-login {
+
+	/*.toolbar-title {
+	        text-align: right;
+		    padding: 16px;
+		    color: grey !important;
+		    font-weight: 300 !important;
+		    font-size: 14px !important;
+	}
+
+	ion-title {
+	    padding: 0px !important;
+	}*/
+
+	ion-item.item {
+	    padding: 0px !important;
+	}
+
+	.no-border{
+		border:none !important;
+	}
+
+	.input-has-focus{
+		border-bottom: 2px solid #5d63f0 !important;
+	}
+
+}

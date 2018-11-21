@@ -169,7 +169,8 @@ export class UserservicesProvider {
     const dataToSend = new HttpParams()
         .set('mobile', param.mobile)
         .set('name', param.name)
-        .set('email', param.email);
+        .set('email', param.email)
+        .set('user_id',param.id);
         
       return new Promise((resolve, reject) => {
         this.http.post(UPDATE_PROFILE_REG_URL, dataToSend, {}).subscribe(data => {

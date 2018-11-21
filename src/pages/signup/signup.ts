@@ -45,6 +45,10 @@ export class SignupPage {
     this.navCtrl.push('VerificationPage');
   }
 
+  logIn(){
+    this.navCtrl.push('LoginPage');
+  }
+
   signup(){
     let loader = this.loadingCtrl.create();
 		loader.present();

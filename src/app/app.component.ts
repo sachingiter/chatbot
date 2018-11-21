@@ -24,6 +24,8 @@ export class MyApp {
   @ViewChild(Nav) nav: Nav;
   rootPage:any = 'HomePage';
   // rootPage:any = 'SignupPage';
+  // rootPage:any = 'DashboardPage';
+
 
   user_name:any;
   user_mobile:any;
@@ -86,8 +88,10 @@ export class MyApp {
     console.log('logout');
     localStorage.removeItem("userDetails");
     localStorage.removeItem("isUserLogin");
+    localStorage.removeItem("user_data")
     this.menuCtrl.swipeEnable(false);
     this.nav.setRoot('HomePage');
+
   }
 
   profile(){

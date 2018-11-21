@@ -135,6 +135,10 @@ export class HomePage {
     this.navCtrl.push('SignupPage');
   }
 
+  logIn(){
+    this.navCtrl.push('LoginPage');
+  }
+
   showHide(){
     console.log(this.passwordType);
     this.passwordType = this.passwordType === 'text' ? 'password' : 'text';

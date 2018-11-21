@@ -40,20 +40,33 @@ export class PersonalinfoPage {
       if(this.navParams.data.redirect_from == 'menu'){
         this.email = this.userServices.getUserEmail();
         this.name = this.userServices.getUserName();
+        this.mobile = JSON.parse(localStorage.getItem("userDetails")).userDetails.user_mobile;
+        console.log(this.mobile)
         this.serverImageUrl = this.userServices.getUserImage();
         console.log(this.userServices.getUserImage());
       }
+
+
   }
 
   ionViewDidLoad() {
     // console.log('ionViewDidLoad PersonalinfoPage');
   }
 
+    // this.mobile = JSON.parse(localStorage.getItem("userDetails")).userDetails.user_mobile;
+    // console.log(this.mobile)
+
   done(){
+    let userDetails:any = localStorage.getItem('userDetails');
+    if(userDetails){
+      userDetails = JSON.parse(userDetails);
+    }
     var dataToSend:any = {
       email : this.email,
       name : this.name,
-      mobile :this.mobile || this.userServices.getUserMobile()
+      // mobile :this.mobile || this.userServices.getUserMobile()
+      mobile : (this.mobile)?this.mobile:userDetails.user_mobile,
+      id:(userDetails)?userDetails.user_id:0
     }
 
     if(this.imageUrl){

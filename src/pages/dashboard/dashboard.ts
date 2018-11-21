@@ -25,6 +25,7 @@ export class DashboardPage {
 
   compose:any;
   messages:any = [];
+  // messages:any = [{resturant:[{name:"Sayaji"}]}];
   chats:any;
 
   rooms = [];
@@ -78,7 +79,7 @@ export class DashboardPage {
     firebase.database().ref('chatrooms/'+this.dbName).on('value', resp => {
       this.loader = false;
       this.messages = snapshotToArray(resp);
-      // console.log(this.messages);
+      console.log(this.messages);
       this.scrolltoBottom();
     });
     this.i ++;
@@ -89,17 +90,27 @@ export class DashboardPage {
     // newData.set({
     //   roomname:"praveen"
     // });
-    let dbName = this.userServices.getUserName().replace(" ", "_")+this.userServices.getUserId();
-    let joinData = firebase.database().ref('chatrooms/'+this.dbName).push();
-    joinData.set({
+    let splitedMsg = message.split('@@@@');
+    if(message){
+        message = splitedMsg[0];
+    }
+      let firebaseMessageObj: any ={
       from : from,
       message : message,
       restaurants : (restaurants)?restaurants:'',
       flights : (flights)?flights:'',
       cabs : (cabs)?cabs:'',
       hotels : (hotels)?hotels:'',
-      time:Date()
-    });    
+      time:Date(),
+      question_id:''
+    };
+      if(splitedMsg.length > 1){
+        firebaseMessageObj.question_id = splitedMsg[1];
+      }
+
+    let dbName = this.userServices.getUserName().replace(" ", "_")+this.userServices.getUserId();
+    let joinData = firebase.database().ref('chatrooms/'+this.dbName).push();
+    joinData.set(firebaseMessageObj);    
   }
 
   clearSession(){
@@ -139,17 +150,13 @@ export class DashboardPage {
     }
     this.messages.push(msg);
     this.scrolltoBottom();
-
     let dataToSend = this.compose; 
-    this.compose = null;
-
-    this.createChat(this.userServices.getUserId(), msg.message);
-
-    this.userServices.chat(dataToSend).then( data=> {
+      this.compose = null;
+      this.createChat(this.userServices.getUserId(), msg.message);
+      this.userServices.chat(dataToSend).then( data=> {
       this.loader = false;
       let splitMsg = data['message'].split('@@@@');
-      console.log(data['action']);
-      // console.log();
+      console.log(data['message']);
       let fromsms = {
         message : splitMsg[0],
         from : 'bot',
@@ -178,11 +185,9 @@ export class DashboardPage {
         this.hotelRadius = data['hotel_details'].range.value;
         fromsms.message = 'Please fill following details for you city "'+ data['hotel_details'].city + '"...';
       }
-
       this.messages.push(fromsms);
       console.log(fromsms);
-      this.createChat('bot', fromsms.message, fromsms.restaurants);
-      
+      this.createChat('bot', data['message'], fromsms.restaurants);
       this.scrolltoBottom();
       this.compose = null;
     })

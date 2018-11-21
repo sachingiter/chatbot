@@ -22,7 +22,126 @@
 </ion-header>
 
 <ion-content padding-top class="greyColor">
-  <button *ngIf="!messages.length" ion-button full (click)="clearSession()" >Click here to start</button>
+  <!-- <button *ngIf="!messages.length" ion-button full (click)="clearSession()" >Click here to start</button> -->
+
+  <!-- <ion-row>
+    <ion-col col-3 class="flex-center">
+      <div text-center (click)="showtab = 'tab1'" [ngClass]="showtab == 'tab1'?'active':'deactive'">
+        <img src="assets/imgs/resticon.png" class="image-icon">
+        <h4 class="tab-tile">RESTAURANT</h4>
+      </div>
+    </ion-col>
+    <ion-col col-3 class="flex-center">
+      <div text-center (click)="showtab = 'tab2'" [ngClass]="showtab == 'tab2'?'active':'deactive'">
+         <img src="assets/imgs/airlineicon.png" class="image-icon">
+         <h4 class="tab-tile">AIRLINE</h4>
+      </div>
+    </ion-col>
+    <ion-col col-3 class="flex-center">
+      <div text-center (click)="showtab = 'tab3'" [ngClass]="showtab == 'tab3'?'active':'deactive'">
+         <img src="assets/imgs/cabicon.png" class="image-icon">
+        <h4 class="tab-tile">CAB</h4>
+      </div>
+    </ion-col>
+    <ion-col col-3 class="flex-center">      
+      <div text-center (click)="showtab = 'tab4'" [ngClass]="showtab == 'tab4'?'active':'deactive'">
+         <img src="assets/imgs/hotelicon.png" class="image-icon">
+        <h4 class="tab-tile">HOTEL</h4>
+      </div>
+    </ion-col>
+  </ion-row> -->
+
+  <!-- <div *ngIf="showtab == 'tab1'">
+        <ion-card *ngFor="let restaurant of [1,1,1,1]">
+              <ion-card-header><strong>Sayaji</strong></ion-card-header>
+              <ion-card-content>
+                Vijay Nagar.<br>
+                Indore, Madhya Pradesh<br>
+                India, 452016<br>
+                <a ion-button href="{{ restaurant.mobile_reserve_url }}">Open</a> 
+              </ion-card-content>
+            </ion-card>
+  </div>
+
+  <div *ngIf="showtab == 'tab2'">
+     <ion-card *ngFor="let flight of [1,1,1,1]">
+              <ion-card-header><strong>Airline</strong></ion-card-header>
+              <ion-card-content text-wrap>
+                <ion-row>
+                  <ion-col>
+                    <ion-icon ios="ios-clock" md="md-clock"></ion-icon> duration
+                  </ion-col>
+                  <ion-col col-auto style="text-align: right;">
+                    $ 1000
+                  </ion-col>
+                </ion-row>
+                <div>
+                    <ion-icon name="ios-plane"></ion-icon> flight.outbound.flights 
+                  <span  > - dest.destination.airport</span>
+                </div>
+                
+                <ion-row *ngIf="flight.inbound" style="background: lightgray;">
+                  <ion-col>
+                    <ion-icon ios="ios-clock" md="md-clock"></ion-icon>50 mins
+                  </ion-col>
+                  <ion-col col-auto style="text-align: right;">
+                    $ 1000
+                  </ion-col>
+                </ion-row>
+                <div *ngIf="flight.inbound" style="background: lightgray;text-align: right;">
+                  <ion-icon name="ios-plane" style="transform: rotateY(180deg);" ></ion-icon> {{ flight.inbound.flights[0].origin.airport }} 
+                  <span *ngFor="let dest of flight.inbound.flights" > - {{ dest.destination.airport }}</span>
+                  
+                </div>
+                
+                <a ion-button href="{{ flight.deep_link }}">Open</a> 
+              </ion-card-content>
+            </ion-card>
+  </div>
+
+  <div *ngIf="showtab == 'tab3'">
+    <ion-card *ngFor="let cab of [1,1,1,1]">
+              <ion-card-header><strong>Ola</strong></ion-card-header>
+              <ion-card-content>
+                Delhi<br>
+                50 meter near about you<br>
+                  <ion-row>
+                    <ion-col col-auto>
+                      <img src="assets/imgs/cab.png" style="width: 30px; margin-top: -7px" />
+                    </ion-col>
+                    <ion-col>
+                      <hr>
+                    </ion-col>
+                    <ion-col col-auto>
+                      <ion-icon name="pin" ></ion-icon>
+                    </ion-col>
+                  </ion-row>
+                  <button ion-button full icon-only  >
+                    <ion-icon ios="ios-call" md="md-call"></ion-icon>
+                  </button>
+              </ion-card-content>
+            </ion-card>
+  </div>
+
+  <div *ngIf="showtab == 'tab4'">
+            <ion-card *ngFor="let hotel of [1,1,1,1]">
+              <ion-card-header><strong>property_name</strong></ion-card-header>
+              <ion-card-content text-wrap>
+                address-line1,&nbsp;
+                hotel-address-city<br>
+                  <ion-row>
+                    <ion-col>
+                      Price: 500 $
+                    </ion-col>
+                    <ion-col col-auto>
+                      <button style="margin-top: -5px;height: 2rem;" ion-button icon-only clear (click)="callCabService(hotel.contacts.detail, 'fromHotel')">
+                        <ion-icon ios="ios-call" md="md-call"></ion-icon>
+                      </button>
+                    </ion-col>
+                  </ion-row>
+              </ion-card-content>
+            </ion-card>
+  </div> -->
   <div *ngFor="let message1 of messages">
     <ion-item no-lines *ngIf="message1.from == 'bot' ">
       <ion-avatar item-start style="margin:0;margin-right:3px;">
