@@ -7,13 +7,6 @@ import { FilePath } from '@ionic-native/file-path';
 import { FileTransfer, FileUploadOptions, FileTransferObject } from '@ionic-native/file-transfer';
 import { UserservicesProvider } from "../../providers/userservices/userservices";
 
-/**
- * Generated class for the PersonalinfoPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
-
 declare var cordova: any;
 
 @IonicPage()
@@ -29,24 +22,33 @@ export class PersonalinfoPage {
   imageName:any;
   mobile:any;
   serverImageUrl:any;
+  UserDatas:any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams,public actionSheetCtrl: ActionSheetController,
     private androidPermissions: AndroidPermissions, private camera: Camera, public platform: Platform, private file: File,
     private filePath: FilePath, public loadingCtrl:LoadingController, public userServices:UserservicesProvider,public fileTransfer:FileTransfer,
     public events:Events) {
+
       if(navParams.data.mobile){
         this.mobile = navParams.data.mobile;
       }
-      if(this.navParams.data.redirect_from == 'menu'){
-        this.email = this.userServices.getUserEmail();
-        this.name = this.userServices.getUserName();
-        this.mobile = JSON.parse(localStorage.getItem("userDetails")).userDetails.user_mobile;
-        console.log(this.mobile)
-        this.serverImageUrl = this.userServices.getUserImage();
-        console.log(this.userServices.getUserImage());
+      if(localStorage.getItem("userDetails")){
+          this.UserDatas = JSON.parse(localStorage.getItem("userDetails"))
+          console.log(this.UserDatas)
       }
-
-
+      if(this.navParams.data.redirect_from == 'menu'){
+        this.email = this.UserDatas.user_email
+        this.name = this.UserDatas.user_name
+        this.mobile = this.UserDatas.user_mobile
+        this.serverImageUrl = this.UserDatas.user_image
+        
+        // this.email = this.userServices.getUserEmail();
+        // this.name = this.userServices.getUserName();
+        // this.mobile = JSON.parse(localStorage.getItem("userDetails")).userDetails.user_mobile;
+        // console.log(this.mobile)
+        // this.serverImageUrl = this.userServices.getUserImage();
+        // console.log(this.userServices.getUserImage());
+      }
   }
 
   ionViewDidLoad() {

@@ -60,8 +60,8 @@ export class SignupPage {
 			loader.dismiss();
 			if(data['success']){
 				this.userServices.toast(data['message']);
-        // this.navCtrl.setRoot('HomePage');
-        this.navCtrl.push('PersonalinfoPage',{mobile:this.mobile});
+        this.navCtrl.setRoot('LoginPage');
+        //this.navCtrl.push('PersonalinfoPage',{mobile:this.mobile});
 			}
 			else{
 				this.userServices.alertBox( data['message']);

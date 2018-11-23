@@ -22,12 +22,12 @@
     </ion-item>
     <ion-item>
       <ion-icon color="primary" item-start ios="ios-lock" md="md-lock"></ion-icon>
-      <ion-label floating>Pasword</ion-label>
+      <ion-label floating>Password</ion-label>
       <ion-input no-margin type="password" (keyup)="checkPassword()" [(ngModel)]="password" ></ion-input>
     </ion-item>
     <ion-item>
       <ion-icon color="primary" item-start ios="ios-lock" md="md-lock"></ion-icon>
-      <ion-label floating>Confirm Pasword</ion-label>
+      <ion-label floating>Confirm Password</ion-label>
       <ion-input no-margin type="password" (keyup)="checkPassword()" [(ngModel)]="confirmpassword" ></ion-input>
     </ion-item>
     <p *ngIf="passmatch" style="color:red;">Password and confirm Password must be same.</p>

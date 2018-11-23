@@ -24,4 +24,22 @@ page-login {
 		border-bottom: 2px solid #5d63f0 !important;
 	}
 
+	.item-inner{
+		border-bottom: 0.55px solid #c8c7cc !important;
+	}
+
+	.flex-center{
+		align-items: center;
+    	display: flex;
+    	justify-content: center;
+	}
+
+	.wid-100{
+		width:100% !important;
+	}
+
+	.hi-wi-100{
+		height:100% !important;
+		width:100% !important;
+	}
 }

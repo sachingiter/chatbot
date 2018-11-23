@@ -8,22 +8,35 @@
 </ion-header>
 
 
-<ion-content padding>
+<ion-content padding >
 
-	<div>
-		<h5>Log in</h5>
+	<div >
+		<!-- <h5>Log in</h5> -->
+		<div >
 		<ion-list>
-		  <ion-item class="no-border">
+		  <!-- <ion-item class="no-border">
 		    <ion-label stacked>MOBILE</ion-label>
 		    <ion-input type="number" placeholder="987894561" [(ngModel)]="mobile"></ion-input>
 		  </ion-item>
 		  <ion-item>
 		    <ion-label stacked>PASSWORD</ion-label>
 		    <ion-input type="password" placeholder="password" [(ngModel)]="password"></ion-input>
+		  </ion-item> -->
+ 		  <ion-item class="no-border">
+		      <ion-icon color="primary" item-start ios="ios-phone-portrait" md="md-phone-portrait"></ion-icon>
+		      <ion-label floating>Mobile Number</ion-label>
+		      <ion-input no-margin type="number" [(ngModel)]="mobile" ></ion-input>
 		  </ion-item>
+	      <ion-item class="no-border">
+		     <ion-icon color="primary" item-start ios="ios-lock" md="md-lock"></ion-icon>
+		     <ion-label floating>Password</ion-label>
+		     <ion-input no-margin type="password" [(ngModel)]="password" ></ion-input>
+	      </ion-item>
 		</ion-list>
-		<br><br><br>
-		<button padding ion-button full class="btn-blue btn radius-5" (click)="logIn()">LOG IN</button>
+		<br><br>
+		<button padding ion-button full class="btn-blue btn radius-5" (click)="logIn()"
+		[disabled]="!mobile || !password ">LOG IN</button>
+		</div>
 	</div>
 
 </ion-content>

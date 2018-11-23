@@ -11,6 +11,7 @@ export class LoginPage {
 
   mobile:any;
   password:any;
+  LoginData:any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public userServices:UserservicesProvider,
     public loadingCtrl:LoadingController) {
@@ -35,9 +36,18 @@ export class LoginPage {
 				console.log(data);
 				this.userServices.toast(data['message']);
 				localStorage.setItem("userDetails",JSON.stringify(data.userDetails));
-      			this.navCtrl.setRoot('DashboardPage');
+				if(localStorage.getItem("userDetails")){
+					this.LoginData = JSON.parse(localStorage.getItem("userDetails"))
+					console.log(this.LoginData)
+					if(this.LoginData.user_name == "" ){
+						this.navCtrl.push('PersonalinfoPage',{mobile:this.LoginData.user_mobile});
+					}
+					else{
+						this.navCtrl.setRoot('DashboardPage');
+					}
+				}
         		// this.navCtrl.setRoot('HomePage');
-        		// this.navCtrl.push('PersonalinfoPage',{mobile:this.mobile});
+        		
 			}
 			else{
 				this.userServices.alertBox( data['message']);

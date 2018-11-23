@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { Nav,Platform, MenuController, Events } from 'ionic-angular';
+import { Nav,Platform, MenuController, Events , AlertController} from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { UserservicesProvider } from '../providers/userservices/userservices';
@@ -22,7 +22,7 @@ const config = {
 })
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
-  rootPage:any = 'HomePage';
+  //rootPage:any = 'HomePage';
   // rootPage:any = 'SignupPage';
   // rootPage:any = 'DashboardPage';
 
@@ -30,15 +30,24 @@ export class MyApp {
   user_name:any;
   user_mobile:any;
   user_image:any;
+  currentUser:any;
+  rootPage:any;
 
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen,public menuCtrl: MenuController,
-    public events:Events, public userServices:UserservicesProvider, private geolocation: Geolocation) {
+    public events:Events, public userServices:UserservicesProvider, private geolocation: Geolocation, private alertCtrl: AlertController) {
     platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
       statusBar.styleDefault();
       splashScreen.hide();
       this.menuCtrl.swipeEnable(false);
+     
+          this.currentUser = JSON.parse(localStorage.getItem('userDetails'));
+          this.rootPage = this.currentUser
+                      ? 'DashboardPage'
+                      : 'HomePage';
+     
+      
       this.events.subscribe("login", data=>{
         this.loginEvent();
       })
@@ -93,6 +102,32 @@ export class MyApp {
     this.nav.setRoot('HomePage');
 
   }
+
+
+  LogoutConfirmation() {
+    let alert = this.alertCtrl.create({
+      title: 'Logout',
+      message: 'Are you sure you want to logout?',
+      buttons: [
+        {
+          text: 'Cancel',
+          role: 'cancel',
+          handler: () => {
+            console.log('Cancel clicked');
+          }
+        },
+        {
+          text: 'Logout',
+          handler: () => {
+            this.logout()
+            console.log('Buy clicked');
+          }
+        }
+      ]
+    });
+    alert.present();
+  }
+
 
   profile(){
     this.nav.push('PersonalinfoPage',{ redirect_from:'menu' });
