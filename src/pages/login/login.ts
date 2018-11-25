@@ -39,7 +39,7 @@ export class LoginPage {
 				if(localStorage.getItem("userDetails")){
 					this.LoginData = JSON.parse(localStorage.getItem("userDetails"))
 					console.log(this.LoginData)
-					if(this.LoginData.user_name == "" ){
+					if(this.LoginData.user_name && this.LoginData.user_name.trim() == "" ){
 						this.navCtrl.push('PersonalinfoPage',{mobile:this.LoginData.user_mobile});
 					}
 					else{

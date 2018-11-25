@@ -46,8 +46,14 @@ export class MyApp {
           this.rootPage = this.currentUser
                       ? 'DashboardPage'
                       : 'HomePage';
-     
-      
+      if(this.currentUser){
+        this.user_name = this.currentUser.user_name;
+        this.user_image = this.currentUser.user_image;
+        this.user_mobile = this.currentUser.user_mobile;
+        if(!this.user_image){
+          this.user_image = 'assets/imgs/mobile.png';
+        }
+      }
       this.events.subscribe("login", data=>{
         this.loginEvent();
       })

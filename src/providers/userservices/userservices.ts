@@ -170,7 +170,7 @@ export class UserservicesProvider {
         .set('mobile', param.mobile)
         .set('name', param.name)
         .set('email', param.email)
-        .set('user_id',param.id);
+        .set('user_id',param.user_id);
         
       return new Promise((resolve, reject) => {
         this.http.post(UPDATE_PROFILE_REG_URL, dataToSend, {}).subscribe(data => {

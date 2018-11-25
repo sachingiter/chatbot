@@ -68,7 +68,7 @@ export class PersonalinfoPage {
       name : this.name,
       // mobile :this.mobile || this.userServices.getUserMobile()
       mobile : (this.mobile)?this.mobile:userDetails.user_mobile,
-      id:(userDetails)?userDetails.user_id:0
+      user_id:(userDetails)?userDetails.user_id:0
     }
 
     if(this.imageUrl){
@@ -128,9 +128,9 @@ export class PersonalinfoPage {
         if(data['success']){
           this.userServices.toast(data['message'])
           if(this.mobile){
-            if(data['userDetails']){
-              localStorage.setItem("userDetails", JSON.stringify(data['userDetails']));
-              localStorage.setItem("isUserLogin","true");
+            if(data['success']){
+              // localStorage.setItem("userDetails", JSON.stringify(data['userDetails']));
+              // localStorage.setItem("isUserLogin","true");
               this.events.publish("login");
               this.navCtrl.setRoot('DashboardPage');
             }
