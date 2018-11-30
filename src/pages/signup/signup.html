@@ -16,9 +16,24 @@
 <ion-content padding>
 
     <ion-item>
+      <ion-icon color="primary" item-start ios="ios-contact" md="md-contact"></ion-icon>
+      <ion-label floating>Name</ion-label>
+      <ion-input no-margin type="text" [(ngModel)]="name" ></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-icon color="primary" item-start ios="ios-mail" md="md-mail"></ion-icon>
+      <ion-label floating>Email</ion-label>
+      <ion-input no-margin type="email" [(ngModel)]="email" ></ion-input>
+    </ion-item>
+    <ion-item>
       <ion-icon color="primary" item-start ios="ios-phone-portrait" md="md-phone-portrait"></ion-icon>
       <ion-label floating>Mobile Number</ion-label>
-      <ion-input no-margin type="number" [(ngModel)]="mobile" ></ion-input>
+      <ion-input no-margin type="number" [(ngModel)]="phone_number" ></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-icon color="primary" item-start ios="ios-pin" md="md-pin"></ion-icon>
+      <ion-label floating>Address</ion-label>
+      <ion-textarea [(ngModel)]="address" name="address" autocomplete="on" autocorrect="on"></ion-textarea>
     </ion-item>
     <ion-item>
       <ion-icon color="primary" item-start ios="ios-lock" md="md-lock"></ion-icon>
@@ -31,12 +46,9 @@
       <ion-input no-margin type="password" (keyup)="checkPassword()" [(ngModel)]="confirmpassword" ></ion-input>
     </ion-item>
     <p *ngIf="passmatch" style="color:red;">Password and confirm Password must be same.</p>
-    <!-- <ion-item  no-lines>
-        <button padding ion-button full (click)="signup()" [disabled]="!mobile || !password || confirmpassword != password" >SIGNUP</button>
-    </ion-item> -->
     <ion-item class="center" padding-left padding-right text-wrap no-lines><p>By signing up with Metro Mini Cab you are agree to our <strong>Term and Conditions</strong> </p></ion-item>
 
-    <button padding ion-button full class="btn-blue btn radius-5" (click)="signup()" [disabled]="!mobile || !password || confirmpassword != password"  >SIGNUP</button>
+    <button padding ion-button full class="btn-blue btn radius-5" (click)="signup()" [disabled]="!address ||!email ||!name ||!phone_number || !password || confirmpassword != password"  >SIGNUP</button>
     <button padding ion-button full  class="btn-blue btn radius-5" (click)="logIn()">SIGIN</button>
 
 </ion-content>

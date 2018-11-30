@@ -2,18 +2,13 @@ import { HttpClient,HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { AlertController, ToastController } from 'ionic-angular';
 
-/*
-  Generated class for the UserservicesProvider provider.
-
-  See https://angular.io/guide/dependency-injection for more info on providers
-  and Angular DI.
-*/
-
 // let SERVER_URL = "http://192.168.43.15/chatbot/index.php/api/"
 let SERVER_URL = "http://ec2-54-205-150-112.compute-1.amazonaws.com/chatbot/index.php/api/";
+let NEW_SERVER_URL = "http://ec2-54-205-150-112.compute-1.amazonaws.com/api/";
 let CHAT_URL = "http://ec2-54-205-150-112.compute-1.amazonaws.com:8000/"
 let LOGIN_URL = SERVER_URL+"login";
 let REGISTER_URL = SERVER_URL+"register";
+let SIGNUP_URL = NEW_SERVER_URL+"user-signup";
 let VERIFY_MOBILENO_URL = SERVER_URL+"verifyMobileNo";
 let UPDATE_PROFILE_REG_URL = SERVER_URL+"updateProfileReg";
 let USER_CARDS_URL = SERVER_URL+"getUserCards";
@@ -130,6 +125,23 @@ export class UserservicesProvider {
 
       return new Promise((resolve, reject) => {
         this.http.post(LOGIN_URL, dataToSend, {}).subscribe(data => {
+          resolve(data);
+        }, err => {
+          reject(err);
+        });
+      });
+  }
+
+  signup(param) {
+    const dataToSend = new HttpParams()
+        .set('name', param.name)
+        .set('email', param.email)
+        .set('phone_number', param.phone_number)
+        .set('address', param.address)
+        .set('password',param.password);
+        
+      return new Promise((resolve, reject) => {
+        this.http.post(SIGNUP_URL, dataToSend, {}).subscribe(data => {
           resolve(data);
         }, err => {
           reject(err);

@@ -16,8 +16,11 @@ import { UserservicesProvider } from '../../providers/userservices/userservices'
 })
 export class SignupPage {
 
+  name:any;
+  email:any;
+  phone_number:any;
+  addrsss:any;
   password:any;
-  mobile:any;
   confirmpassword:any;
 
   passmatch:any;
@@ -53,10 +56,15 @@ export class SignupPage {
     let loader = this.loadingCtrl.create();
 		loader.present();
     let dataToSend = {
-      mobile:this.mobile,
+      name:this.name,
+      email:this.email,
+      phone_number:this.phone_number,
+      address:this.address,
       password:this.password
+      // mobile:this.mobile,
+      
     }
-    this.userServices.register(dataToSend).then( data=> {
+    this.userServices.signup(dataToSend).then( data=> {
 			loader.dismiss();
 			if(data['success']){
 				this.userServices.toast(data['message']);

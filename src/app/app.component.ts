@@ -26,7 +26,6 @@ export class MyApp {
   // rootPage:any = 'SignupPage';
   // rootPage:any = 'DashboardPage';
 
-
   user_name:any;
   user_mobile:any;
   user_image:any;
@@ -134,7 +133,6 @@ export class MyApp {
     alert.present();
   }
 
-
   profile(){
     this.nav.push('PersonalinfoPage',{ redirect_from:'menu' });
   }
@@ -143,20 +141,20 @@ export class MyApp {
     this.nav.push('BillinginfoPage');
   }
 
-  boking(){
-
+  currentBooking(){
+    this.nav.push('CurrenthistoryPage');
   }
 
-  history(){
-
+  bookingHistory(){
+    this.nav.push('BookinghistoryPage');
   }
 
   about(){
-
+    this.nav.push('AboutPage');
   }
 
   faq(){
-
+    this.nav.push('FaqPage');
   }
 }
 
