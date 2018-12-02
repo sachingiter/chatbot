@@ -4,11 +4,11 @@ import { AlertController, ToastController } from 'ionic-angular';
 
 // let SERVER_URL = "http://192.168.43.15/chatbot/index.php/api/"
 let SERVER_URL = "http://ec2-54-205-150-112.compute-1.amazonaws.com/chatbot/index.php/api/";
-let NEW_SERVER_URL = "http://ec2-54-205-150-112.compute-1.amazonaws.com/api/";
+let NEW_SERVER_URL = "http://ec2-54-205-150-112.compute-1.amazonaws.com/conciedge/api/";
 let CHAT_URL = "http://ec2-54-205-150-112.compute-1.amazonaws.com:8000/"
 let LOGIN_URL = SERVER_URL+"login";
 let REGISTER_URL = SERVER_URL+"register";
-let SIGNUP_URL = NEW_SERVER_URL+"user-signup";
+let SIGNUP_URL = NEW_SERVER_URL+"user-signup.php";
 let VERIFY_MOBILENO_URL = SERVER_URL+"verifyMobileNo";
 let UPDATE_PROFILE_REG_URL = SERVER_URL+"updateProfileReg";
 let USER_CARDS_URL = SERVER_URL+"getUserCards";

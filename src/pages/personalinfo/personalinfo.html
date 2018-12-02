@@ -19,7 +19,7 @@
     <ion-col col-auto>
       <button class="image-button" ion-button icon-only color="primary" (click)="choosePicker()" >
         <ion-icon *ngIf="!serverImageUrl" ios="ios-add" md="md-add"></ion-icon>
-        <img *ngIf="serverImageUrl" [src]="serverImageUrl" />
+        <img *ngIf="serverImageUrl" [src]="serverImageUrl" style="border-radius: 50%;" />
       </button>
     </ion-col>
     <ion-col class="left">

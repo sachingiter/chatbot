@@ -31,52 +31,51 @@ export class MyApp {
   user_image:any;
   currentUser:any;
   rootPage:any;
+  UserDatas:any
 
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen,public menuCtrl: MenuController,
     public events:Events, public userServices:UserservicesProvider, private geolocation: Geolocation, private alertCtrl: AlertController) {
     platform.ready().then(() => {
-      // Okay, so the platform is ready and our plugins are available.
-      // Here you can do any higher level native things you might need.
-      statusBar.styleDefault();
-      splashScreen.hide();
-      this.menuCtrl.swipeEnable(false);
-     
-          this.currentUser = JSON.parse(localStorage.getItem('userDetails'));
-          this.rootPage = this.currentUser
-                      ? 'DashboardPage'
-                      : 'HomePage';
-      if(this.currentUser){
-        this.user_name = this.currentUser.user_name;
-        this.user_image = this.currentUser.user_image;
-        this.user_mobile = this.currentUser.user_mobile;
-        if(!this.user_image){
-          this.user_image = 'assets/imgs/mobile.png';
-        }
-      }
-      this.events.subscribe("login", data=>{
-        this.loginEvent();
-      })
-      // let apps = document.getElementsByTagName("body");
-      // apps[0].style.fontFamily = "Arial, Helvetica, sans-serif";
-      // console.log(apps);
-      let htmlRoot:HTMLElement = <HTMLElement> document.getElementsByTagName("html")[0];
-      htmlRoot.style.fontFamily = "Courier New";
-      console.log( document.getElementsByTagName("html")[0].style.fontFamily)
-      firebase.initializeApp(config);
 
-      let options:GeolocationOptions = {
-        enableHighAccuracy : true,
-      }
-      this.geolocation.getCurrentPosition(options).then((resp) => {
-        console.log(resp.coords);
-      // resp.coords.latitude
-      // resp.coords.longitude
-      localStorage.setItem("latitude", resp.coords.latitude+"");
-      localStorage.setItem("longitude",  resp.coords.longitude+"");
-      }).catch((error) => {
-        console.log('Error getting location', error);
-      });
+              statusBar.styleDefault();
+              splashScreen.hide();
+              this.menuCtrl.swipeEnable(false);
+              if(localStorage.getItem("userDetails")){
+                this.currentUser = JSON.parse(localStorage.getItem('userDetails'));
+                console.log(this.currentUser)
+              }  
+              this.rootPage = this.currentUser
+                              ? 'DashboardPage'
+                              : 'HomePage';
+              if(this.currentUser){
+                this.user_name = this.currentUser.user_name;
+                this.user_image = this.currentUser.user_image;
+                this.user_mobile = this.currentUser.user_mobile;
+                if(!this.user_image){
+                  this.user_image = 'assets/imgs/mobile.png';
+                }
+              }
+              this.events.subscribe("login", data=>{
+                this.loginEvent();
+              })
+              // let apps = document.getElementsByTagName("body");
+              // apps[0].style.fontFamily = "Arial, Helvetica, sans-serif";
+              // console.log(apps);
+              let htmlRoot:HTMLElement = <HTMLElement> document.getElementsByTagName("html")[0];
+              htmlRoot.style.fontFamily = "Courier New";
+              console.log( document.getElementsByTagName("html")[0].style.fontFamily)
+              firebase.initializeApp(config);
 
+              let options:GeolocationOptions = {
+                enableHighAccuracy : true,
+              }
+              this.geolocation.getCurrentPosition(options).then((resp) => {
+                console.log(resp.coords);
+              localStorage.setItem("latitude", resp.coords.latitude+"");
+              localStorage.setItem("longitude",  resp.coords.longitude+"");
+              }).catch((error) => {
+                console.log('Error getting location', error);
+              });
     });
   }
 
