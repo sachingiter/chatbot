@@ -94,6 +94,14 @@ export class MyApp {
     else{
       this.user_image = 'assets/imgs/mobile.png';
     }
+    if(this.currentUser){
+                this.user_name = this.currentUser.user_name;
+                this.user_image = this.currentUser.user_image;
+                this.user_mobile = this.currentUser.user_mobile;
+                if(!this.user_image){
+                  this.user_image = 'assets/imgs/mobile.png';
+                }
+              }
     this.nav.setRoot('DashboardPage');
   }
 

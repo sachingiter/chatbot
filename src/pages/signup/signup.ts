@@ -57,10 +57,10 @@ export class SignupPage {
     }
     this.userServices.signup(dataToSend).then( data=> {
 			loader.dismiss();
-			if(data.error == false){
+			if(data['error'] == false){
         console.log(data)
 				this.userServices.toast(data['message']);
-        localStorage.setItem("userDetails", JSON.stringify(data.user));
+        localStorage.setItem("userDetails", JSON.stringify(data['user']));
         localStorage.setItem("isUserLogin","true");
         this.navCtrl.setRoot('LoginPage');
         //this.navCtrl.push('PersonalinfoPage',{mobile:this.mobile});

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, LoadingController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, LoadingController, Events } from 'ionic-angular';
 import { UserservicesProvider } from '../../providers/userservices/userservices';
 
 @IonicPage()
@@ -14,7 +14,8 @@ export class LoginPage {
   LoginData:any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public userServices:UserservicesProvider,
-    public loadingCtrl:LoadingController) {
+    public loadingCtrl:LoadingController,
+    public events:Events) {
   }
 
   ionViewDidLoad() {
@@ -43,7 +44,7 @@ export class LoginPage {
 						this.navCtrl.push('PersonalinfoPage',{mobile:this.LoginData.user_mobile});
 					}
 					else{
-						this.navCtrl.setRoot('DashboardPage');
+						this.events.publish("login");
 					}
 				}
         		// this.navCtrl.setRoot('HomePage');
